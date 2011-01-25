@@ -1,0 +1,30 @@
+body{ 
+	font-family:"Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+aside{
+  position:absolute;
+  width:250px;
+  top:0;
+  left:0;
+  bottom:0;
+  color:#edeeee;
+  background-color:#333; 
+	text-align:center; 
+	text-shadow:#3a3a3a 1px 1px 0;
+}
+aside img{ 
+	display:inline-block; 
+	vertical-align:middle; 
+	margin-bottom:5px; 
+	margin-top:0;
+}
+#content{ 
+	position:absolute; 
+	top:0; 
+	right:0; 
+	bottom:0; 
+	left:250px; 
+	text-align:center; 
+	padding:20px; 
+	font-size:50px;
+}
