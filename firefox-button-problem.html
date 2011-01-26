@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <title>Firefox Button Problem</title>
+  <style type="text/css">
+  form {
+    background:#24A7D6;
+    width:250px;
+    margin:0 auto;
+    padding:20px
+  }
+
+  fieldset {
+    border:0 none
+  }
+
+  legend {
+    color:white;
+    font-weight:bold
+  }
+
+  button {
+    background:transparent url(firefox-button-problem/sprite-search-btn.png) no-repeat -572px -66px;
+    clear:both;
+    cursor:pointer;
+    display:inline-block;
+    height:32px;
+    margin-bottom:1px;
+    margin-top:10px;
+    overflow:hidden;
+    float:left;
+    width:100%;
+    border-style:none;
+    border-width:0;
+    padding:0 0 0 25px
+  }
+
+  button span {
+    background:transparent url(firefox-button-problem/sprite-search-btn.png) no-repeat right 0;
+    display:inline-block;
+    font-size:14px;
+    height:16px;
+    overflow:hidden;
+    white-space:nowrap;
+    float:left;
+    border-style:none;
+    border-width:0;
+    padding:8px 30px 8px 0
+  }
+  .fix button::-moz-focus-inner { 
+    border: 0; 
+    padding: 0; 
+  }
+  </style>
+</head>
+<body>
+  <h1>Firefox Button Problem</h1>
+  <p>View in Firefox to see the problem.</p>
+  <form action="">
+    <fieldset>
+      <legend>Before</legend>
+      <button type="submit">
+        <span>Flights + Hotel</span>
+      </button>
+    </fieldset>
+    <fieldset class="fix">
+      <legend>After</legend>
+      <button type="submit">
+        <span>Flights + Hotel</span>
+      </button>
+    </fieldset>
+  </form>
+</body>
+</html>
