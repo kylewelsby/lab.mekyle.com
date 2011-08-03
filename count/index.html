@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <title>Count</title>
+  <style>
+  body{ 
+  	background-color:#212121;
+  	font-family:"Helvetica Nevu", sans-serif; 
+  	background-image:url(http://subtlepatterns.com/patterns/black_denim.png);
+  }
+  a{ 
+  	color:white;
+  }
+  section{ 
+  	margin-left:auto; 
+  	margin-right:auto; 
+  	width:500px; 
+  	color:#ababab;
+  }
+  h1{ 
+  	color:#eee;
+  }
+  table{ 
+  	margin-left:auto; 
+  	margin-right:auto; 
+  	margin-top:150px;
+  	border:10px solid #8a8a8a;
+  }
+  table thead th{ 
+
+  	color:white; 
+  	padding-top:6px; 
+  	padding-bottom:6px; 
+  	font-size:.7em;
+  }
+
+  table tr td{ 
+  	height:1em; 
+  	position:relative; 
+  	text-align:center; 
+  	background-color:#2a2a2a; 
+  	color:white; 
+  	text-shadow:rgba(255,254,255,0.6) 0 0 10px; 
+  	overflow:hidden; 
+  	line-height:1em; 
+  	font-size:4em; 
+  	padding-bottom:.5em; 
+  	padding-left:.2em; 
+  	margin:0; 
+  	width:1.5em; 
+  	padding-right:.2em;
+  	box-shadow:inset 0px 0px 20px black;
+  }
+  table tr td:first-child{ 
+  	border-top-left-radius:10px;
+  	border-bottom-left-radius:10px;
+  	border-left-width:1px; 
+  }
+  table tr td:last-child{
+  	border-top-right-radius:5px;
+  	border-bottom-right-radius:5px;
+  	border-right-width:1px; 
+  }
+  table tr td:last-child span.minor,
+  table tr td:first-child span.major{
+  	border:none;
+  }
+  table tr td span{ 
+  	position:absolute; 
+  	left:0; 
+  	top:0em; 
+  	width:49%; 
+  	padding-top:.25em;
+  	margin-top:-1em;
+  	-webkit-transition: all .2s ease-in-out;
+  	-moz-transition: all .2s ease-in-out;
+  	-o-transition: all .2s ease-in-out;
+  	-ms-transition: all .2s ease-in-out;
+  	transition: all .2s ease-in-out;
+  }
+  table tr td span.major{
+  	border-left:1px solid #3f3f3f;
+  }
+  table tr td span.minor{ 
+  	right:0; 
+  	left:49%;
+  	border-right:1px solid #0d0d0d; 
+  }
+  </style>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+          <th>Days</th>
+          <th>Hours</th>
+          <th>Mins</th>
+          <th>Secs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td class="days">
+            <span class="version">
+            </span>
+            <span class="major">
+            </span>
+            <span class="minor">
+            </span>
+          </td>
+          <td class="hours">
+            <span class="major">
+            </span>
+            <span class="minor">
+            </span>
+          </td>
+          <td class="mins">
+            <span class="major">
+            </span>
+            <span class="minor">
+            </span>
+          </td>
+          <td class="secs">
+            <span class="major">
+            </span>
+            <span class="minor">
+            </span>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+  <section>
+    <h1>TxtVia</h1>
+    <p>During <a href="http://leedshack.com">Leeds Hack 2011</a> a brilliant Google Chrome Extension will be developed, that will allow users to Send and Receive SMS messages via there Android Mobile Phone.</p>
+    <p>Please check us out on Sunday at 12pm.</p>
+    <p>Follow the development on <a href="http://twitter.com/TxtVia" rel="nofollow">Twitter</a></p>
+  </section>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {    
+        $("table td span").append("9<br/>");
+        for(i=0; i<10;i++){
+            $("table td span").append(i + "<br/>");
+        }
+        $("table td span").append("0");
+
+        function updateTime(){
+            var currentDateTime = new Date(),
+            countdownDateTime = new Date("August 7, 2011 12:00:00"),
+            timeRemaining = Math.ceil(countdownDateTime.getTime() - currentDateTime.getTime()),
+            totalDaysRemaining = timeRemaining / (1000*60*60*24),
+            daysRemaining = Math.floor(totalDaysRemaining),
+            totalHoursRemaining = timeRemaining / (1000*60*60),
+            hoursRemaining = Math.floor(totalHoursRemaining - (24*Math.floor(totalDaysRemaining))),
+            totalMinutesRemaining = timeRemaining / (1000*60),
+            minuetsRemaining = Math.floor(totalMinutesRemaining - (60*Math.floor(totalHoursRemaining))),
+            totalSecondsRemaining = timeRemaining / (1000),
+            secondsRemaining = Math.floor(totalSecondsRemaining - (60*Math.floor(totalMinutesRemaining)));
+
+            if(String(daysRemaining).length === 3){
+                $(".days span.version").css({
+                    top:-String(daysRemaining)[String(daysRemaining).length+3-6] + "em"
+                });
+            }
+            if(String(daysRemaining).length >= 2){
+                $(".days span.major").css({
+                    top:-String(daysRemaining)[String(daysRemaining).length+3-5] + "em"
+                });
+            }
+
+            $(".days span.minor").css({
+                top:-String(daysRemaining)[String(daysRemaining).length+3-4] + "em"
+            });
+            if(String(hoursRemaining).length == 2){
+                $(".hours span.major").css({
+                    top:-String(hoursRemaining)[String(hoursRemaining).length+2-4] + "em"
+                });
+            }
+            $(".hours span.minor").css({
+                top:-String(hoursRemaining)[String(hoursRemaining).length+2-3] + "em"
+            });
+            if(String(minuetsRemaining).length === 2){
+                $(".mins span.major").css({
+                    top:-String(minuetsRemaining)[0] + "em"
+                });
+            }
+            $(".mins span.minor").css({
+                top:-String(minuetsRemaining)[String(minuetsRemaining).length+2-3] + "em"
+            });
+            if(String(secondsRemaining).length === 2){
+                $(".secs span.major").css({
+                    top:-String(secondsRemaining)[0] + "em"
+                });
+            }
+            $(".secs span.minor").css({
+                top:-String(secondsRemaining)[String(secondsRemaining).length+2-3] + "em"
+            });
+        }
+
+        setInterval(function(){
+            updateTime();
+        },1000);
+    });
+  </script>
+</body>
+</html>
